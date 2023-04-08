@@ -14,10 +14,24 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member = new Member();
-            member.setUsername("D");
+            // 저장
+            Team team = new Team();
+            team.setName("TeamA");
+//            team.getMembers().add(member);
+            em.persist(team);
 
+            Member member = new Member();
+            member.setUsername("member1");
+            member.changTeam(team);
             em.persist(member);
+
+
+
+
+            em.flush();
+            em.clear();
+
+
             System.out.println("======================");
             tx.commit();
         } catch (Exception e) {
