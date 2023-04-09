@@ -1,9 +1,15 @@
 package hellojpa;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-public class Member {
+@Getter
+@Setter
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -18,26 +24,6 @@ public class Member {
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
 
     public void changTeam(Team team) {
         this.team = team;
